@@ -2,7 +2,7 @@
 
 class Computer
   def initialize
-    @computer = []
+    @computer_array = []
     @file_path = "google-10000-english-no-swears.txt"
     @file_data = File.read(@file_path).split
   end
@@ -18,11 +18,16 @@ class Computer
     puts selected_word
 
     selected_word.each_char do |char|
-      @computer << "_"
+      @computer_array << "_"
     end
 
-    puts @computer.join(" ")
+    puts @computer_array.join(" ")
 
     return selected_word
   end
+
+  def get_computer_array
+    @computer_array
+  end
+  
 end
