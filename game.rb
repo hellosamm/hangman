@@ -78,31 +78,33 @@ class Game
 
   def check_guess_count
     if @guess_count == 8 
-      puts "you couldn't guess the word, want to try again? y/n"
-      user_input = gets.chomp.downcase
-      play_again (user_input)
+      puts "you couldn't guess the word"
+      exit
+      # user_input = gets.chomp.downcase
+      # play_again (user_input)
     end
   end
 
   def check_for_correct_answer
     if @computer_array.join == @computer_word
-      puts "nice job, you won. want to play again? y/n"
-      user_input = gets.chomp.downcase
-      play_again(user_input)
+      puts "you guessed it, nice job"
+      exit
+      # user_input = gets.chomp.downcase
+      # play_again(user_input)
     end
   end
 
  
-  def play_again(user_input)
-    if user_input == "y"
-      @guess_count = 0
-      @computer_word = @computer.make_selection
-      play_round
-    else 
-      puts "see you later"
-      exit
-    end
-  end
+  # def play_again(user_input)
+  #   if user_input == "y"
+  #     @guess_count = 0
+  #     @computer_word = @computer.make_selection
+  #     play_round
+  #   else 
+  #     puts "see you later"
+  #     exit
+  #   end
+  # end
   
 end
 
