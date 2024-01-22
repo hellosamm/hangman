@@ -110,7 +110,7 @@ class Game
 
   def update_guess_count
     @guess_count += 1
-    # puts @guess_count
+    puts "you have made #{@guess_count} guesses"
 
     check_guess_count
   end
@@ -118,6 +118,7 @@ class Game
   def check_guess_count
     if @guess_count == 8 
       puts "you used all 8 guesses & couldn't guess the word"
+      puts "the word was: #{@computer_word}"
       exit
       # user_input = gets.chomp.downcase
       # play_again (user_input)
