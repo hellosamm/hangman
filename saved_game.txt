@@ -1,0 +1,1 @@
+{	:computer_word0:computer_array[I"r:ETI"_;TI"_;TI"i;TI"_;TI"_;T:guess_count0:guess_array0

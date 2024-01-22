@@ -5,16 +5,16 @@ require_relative 'computer_select'
 class Game
   def initialize
     @computer = Computer.new
-    @computer_word = nil
     @guess_array = []
     @guess_count = 0
-    @computer_array = @computer.get_computer_array
+
   end 
 
   
 
   def play
     instructions
+
   end
 
   def play_round
@@ -27,8 +27,10 @@ class Game
     play_game = gets.chomp.downcase 
 
     if play_game == "y"
-      @computer_word = @computer.make_selection
-      play_round
+      @computer_word, @computer_array = @computer.make_selection
+      # options
+      # # play_round
+      start_guessing
     else 
       puts "see you later"
       exit
@@ -40,7 +42,33 @@ class Game
       puts "guess a letter: "
       user_input = gets.chomp.downcase
       check_guess(user_input)
+      options
     end
+  end
+
+  def options
+    loop do
+      puts "select one"
+      puts "1. make a guess"
+      puts "2. save your game"
+      puts "3. load saved game"
+      puts "4. exit"
+      choice = gets.chomp.to_i
+
+      case choice
+      when 1
+        start_guessing
+        break
+      when 2
+        @computer.save_game
+      when 3
+        @computer.open_game
+      when 4
+        exit
+      else 
+        puts "invalid choice"
+      end
+      end
   end
 
   def check_guess (user_input)
@@ -66,7 +94,7 @@ class Game
 
   def update_incorrect_guess_list(user_input)
     @guess_array << user_input
-    puts @guess_array.join(", ")
+    puts "incorrect guesses: #{@guess_array.join(", ")}"
   end
 
   def update_guess_count
